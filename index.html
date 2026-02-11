@@ -347,9 +347,7 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // ========================================
-        // GAME DATA - EDIT HERE
-        // ========================================
+        // GAME DATA
         const gameData = {
             // Lock answers
             locks: [
@@ -387,7 +385,7 @@
                     title: 'The Memory Box',
                     imageUrl: 'images/chest.jpeg' 
                 },
-                // Easter eggs (optional clues)
+                // Easter eggs
                 {
                     id: 'bookshelf',
                     imageUrl: 'images/bookshelf.png',
@@ -459,9 +457,8 @@
                 }
             };
 
-            // ========================================
             // INTRO SCREEN
-            // ========================================
+
             if (gameState === 'intro') {
                 return (
                     <div className="intro-screen">
@@ -477,9 +474,7 @@
                 );
             }
 
-            // ========================================
             // FINAL SCREEN - EDIT YOUR LETTER HERE
-            // ========================================
             if (gameState === 'final') {
                 return (
                     <div className="final-screen">
@@ -514,12 +509,11 @@ text text text text text text text text text, text text text text text text
                 );
             }
 
-            // ========================================
+
             // MAIN GAME SCREEN
-            // ========================================
             return (
                 <div className="game-container">
-                    {/* ===== BACKGROUND ROOM IMAGE - EDIT PATH HERE ===== */}
+                    {/*BACKGROUND ROOM IMAGE */}
                     <div style={{
                         width: '100%',
                         height: '100%',
@@ -535,16 +529,16 @@ text text text text text text text text text, text text text text text text
                         </div>
                     </div>
 
-                    {/* ===== CLICKABLE ZONES - ADJUST POSITIONS HERE ===== */}
+                    {/* CLICKABLE ZONES */}
                     
-                    {/* Computer - Instagram */}
+                    {/* Instagram */}
                     <div 
                         className="clickable-zone" 
                         onClick={() => openModal('computer')}
                         style={{top: '35%', left: '28.5%', width: '80px', height: '80px'}}
                     />
                     
-                    {/* Papers on floor - Boarding pass */}
+                    {/* Boarding pass */}
                     <div 
                         className="clickable-zone"
                         onClick={() => openModal('papers')}
@@ -558,7 +552,7 @@ text text text text text text text text text, text text text text text text
                         style={{top: '86%', left: '82.4%', width: '140px', height: '70px'}}
                     />
 
-                    {/* Sudoku on wall */}
+                    {/* Sudoku */}
                     <div 
                         className="clickable-zone"
                         onClick={() => openModal('sudoku')}
@@ -572,7 +566,7 @@ text text text text text text text text text, text text text text text text
                         style={{top: '60%', left: '14.5%', width: '200px', height: '120px'}}
                     />
 
-                    {/* ===== EASTER EGG ZONES (optional) ===== */}
+                    {/* EASTER EGG ZONES */}
                     
                     {/* Bookshelf */}
                     <div 
@@ -606,7 +600,7 @@ text text text text text text text text text, text text text text text text
                         onClick={() => openModal('aloe')}
                         style={{top: '84.4%', left: '2.4%', width: '100px', height: '100px'}}
                     />
-                    {/* ===== MODAL POPUP ===== */}
+                    {/* MODAL POPUP */}
                     {activeModal && (
                         <div className={`modal ${activeModal ? 'active' : ''}`} onClick={closeModal}>
                             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -644,9 +638,9 @@ text text text text text text text text text, text text text text text text
                                                             maxLength={4}
                                                             style={{
                                                                 position: 'absolute',
-                                                                top: '48%',      // позиция сверху
-                                                                left: '10.5%',     // позиция слева
-                                                                transform: 'rotate(-8deg)',  // угол поворота
+                                                                top: '48%',      
+                                                                left: '10.5%',     
+                                                                transform: 'rotate(-8deg)',  
                                                                 width: '60px',
                                                                 padding: '8px 4px',
                                                                 fontSize: '16px',
@@ -702,7 +696,7 @@ text text text text text text text text text, text text text text text text
                                                                 position: 'absolute',
                                                                 top: '40%',
                                                                 left: '44%',
-                                                                transform: 'rotate(-8deg)',  // центральный без угла
+                                                                transform: 'rotate(-8deg)',  
                                                                 width: '60px',
                                                                 padding: '8px 4px',
                                                                 fontSize: '16px',
@@ -718,7 +712,7 @@ text text text text text text text text text, text text text text text text
                                                             }}
                                                         />
                                                         
-                                                        {/* Lock 4 - для текста MEVA */}
+                                                        {/* Lock 4 */}
                                                         <input
                                                             type="text"
                                                             className={`lock-input ${lockStatus['lock4'] === true ? 'correct' : lockStatus['lock4'] === false ? 'incorrect' : ''}`}
@@ -809,7 +803,7 @@ text text text text text text text text text, text text text text text text
                                                                 clue.id === 'sudoku' ? '500px' :
                                                                 clue.id === 'calendar' ? '500px' :
                                                                 clue.id === 'instagram' ? '500px' :
-                                                                '300px',  // размер по умолчанию
+                                                                '300px', 
                                                         width: 'auto',
                                                         objectFit: 'contain'
                                                     }}
@@ -835,8 +829,8 @@ text text text text text text text text text, text text text text text text
         ReactDOM.render(<MemoryBoxGame />, document.getElementById('app'));
     </script>
     <script>
-    // Temporary helper to find coordinates
-    document.addEventListener('click', function(e) {
+    
+        /*document.addEventListener('click', function(e) {
         const x = e.clientX;
         const y = e.clientY;
         const windowWidth = window.innerWidth;
